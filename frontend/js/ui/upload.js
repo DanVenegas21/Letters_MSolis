@@ -180,7 +180,7 @@ function createQueueItemElement(item) {
     div.dataset.id = item.id;
     
     const fileExtension = item.fileName.substring(item.fileName.lastIndexOf('.') + 1).toUpperCase();
-    const showPreviewButton = item.file && item.status !== 'completed' && item.status !== 'processing';
+    const showPreviewButton = item.file;
     
     div.innerHTML = `
         <div class="queue-item-header">
@@ -304,4 +304,5 @@ export async function uploadFileFromQueue(item) {
         return false;
     }
 }
+
 
