@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Meetings Summarizer</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Automation System for Declaration Letters and Cover Letters</title>
+    <link rel="stylesheet" href="/frontend/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -13,112 +13,84 @@
         <div class="header-container">
             <div class="logo-section">
                 <div class="logo-placeholder">
-                    <img width="76" height="81" src="https://bos.manuelsolis.com/images/logo.png" alt="Logo">
+                    <img width="76" height="81" src="https://bos.manuelsolis.com/images/logo.png">
+                        <rect width="60" height="60" rx="12" fill="#2563eb"/>
+                        <path d="M30 15L45 25V40L30 50L15 40V25L30 15Z" stroke="white" stroke-width="2" fill="none"/>
+                        <circle cx="30" cy="30" r="8" fill="white"/>
+                    </svg>
                 </div>
                 <div class="firm-info">
                     <h1>The Law Offices of Manuel Solis</h1>
-                    <p>Audio Summarizer</p>
+                    <p>Expert Legal Drafting Assistant for T-Visa Petitions.</p>
                 </div>
             </div>
+            <button class="settings-icon" id="settingsBtn" title="Settings">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            </button>
         </div>
     </header>
 
     <!-- SECCIÓN 2: SUBIDA DEL ARCHIVO -->
     <section class="upload-section" id="uploadSection">
         <div class="container">
-            <h2 class="section-title">Upload Your Audio or Video Files</h2>
-            <p class="section-subtitle">"Transform your audio/video recordings into comprehensive summaries"</p>
+            <h2 class="section-title">Upload questionnaire</h2>
+            <p class="section-subtitle">Upload questionnaires to generate Declaration and Cover Letters</p>
+            
             <div class="upload-container-new">
-                <!-- Upload Box con botón a la derecha -->
-                <div class="upload-box-wrapper">
-                    <button class="btn btn-record" id="recordBtn" title="Record Audio">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                            <line x1="12" y1="19" x2="12" y2="23"/>
-                            <line x1="8" y1="23" x2="16" y2="23"/>
+                <!-- Upload Box - Siempre visible -->
+                <div class="upload-box-new" id="uploadBox">
+                    <input type="file" id="fileInput" accept=".docx,.pdf,.txt,.doc" hidden multiple>
+                    
+                    <div class="upload-content-new">
+                        <svg class="upload-icon" width="60" height="60" viewBox="0 0 80 80" fill="none">
+                            <path d="M40 10V50M40 10L25 25M40 10L55 25" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M70 50V65C70 67.7614 68.9464 70.4096 67.0711 72.2839C65.1957 74.1584 62.5478 75.2119 59.7864 75.2119H20.2136C17.4522 75.2119 14.8043 74.1584 12.9289 72.2839C11.0536 70.4096 10 67.7614 10 65V50" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                    </button>
-                    <div class="upload-box-new" id="uploadBox">
-                        <input type="file" id="fileInput" accept="audio/*,video/*,.mp3,.wav,.m4a,.ogg,.flac,.aac,.wma,.webm,.mp4,.avi,.mov,.mkv,.flv,.wmv,.mpeg,.mpg,.3gp,.m4v,.ts" hidden>
-                        <div class="upload-content-new">
-                            <p>Drag and drop an audio or video file here</p>
-                        </div>
+                        <h3>Drag and drop files here</h3>
+                        <p>or</p>
+                        <button class="btn btn-primary" id="selectFileBtn">Select Files</button>
+                        <p class="file-info">Supported: DOCX, PDF, TXT (Max. 10MB each)<br>Max. 5 files</p>
                     </div>
-                    <button class="btn btn-primary" id="selectFileBtn">Select File...</button>
                 </div>
-                <p class="file-info">Supported: MP3, WAV, M4A, OGG, FLAC, AAC, WEBM, MP4, AVI, MOV, MKV, etc. (Max. 100MB)</p>
 
-                <!-- Audio cargado -->
+                <!-- Lista de documentos cargados -->
                 <div class="documents-queue hidden" id="documentsQueue">
                     <div class="queue-header">
-                        <h3>Audio File Ready to Process</h3>
+                        <h3>Documents Ready to Process</h3>
+                        <span class="queue-count" id="queueCount">0 files</span>
                     </div>
                     <div class="queue-list" id="queueList">
-                        <!-- El audio se agregará dinámicamente aquí -->
+                        <!-- Los documentos se agregarán dinámicamente aquí -->
                     </div>
-                    
-                    <!-- Selector de idioma -->
-                    <div class="language-selector">
-                        <label for="languageSelect" class="language-label">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                            </svg>
-                            <span>Transcription Language:</span>
-                        </label>
-                        <select id="languageSelect" class="language-select">
-                            <option value="en" selected>English</option>
-                            <option value="es">Spanish (Español)</option>
-                            <option value="fr">French (Français)</option>
-                            <option value="de">German (Deutsch)</option>
-                            <option value="it">Italian (Italiano)</option>
-                            <option value="pt">Portuguese (Português)</option>
-                        </select>
-                    </div>
-                    
                     <button class="btn btn-success btn-large btn-full-width" id="processAllBtn">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M10 3V17M10 17L15 12M10 17L5 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
-                        Generate Summary
+                        Process All Documents
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN 3: VISUALIZACIÓN DE LOS RESÚMENES -->
+    <!-- SECCIÓN 3: VISUALIZACIÓN DE LOS DOCUMENTOS -->
     <section class="preview-section hidden" id="previewSection">
         <div class="container-wide">
-            <!-- Tabs de navegación entre resúmenes -->
+            <h2 class="section-title">Generated Documents</h2>
+            
+            <!-- Tabs de navegación entre documentos -->
             <div class="documents-tabs hidden" id="documentsTabs">
                 <div class="tabs-header" id="tabsHeader">
                     <!-- Las tabs se agregarán dinámicamente -->
                 </div>
             </div>
-            <!-- Contenedor de resúmenes con tabs -->
+
+            <!-- Contenedor de documentos con tabs -->
             <div class="documents-viewer" id="documentsViewer">
-                <!-- Cada resumen tendrá su propio panel -->
-            </div>
-            
-            <!-- Chat Footer Estático -->
-            <div class="chat-footer-static hidden" id="chatFooterStatic">
-                <div class="chat-footer-container">
-                    <div class="chat-input-container">
-                        <textarea 
-                            id="chatInput" 
-                            placeholder="Ask me anything about your audio summary..."
-                            rows="1"
-                        ></textarea>
-                        <button class="btn btn-primary chat-send-btn" id="sendChatBtn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 8L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            Send
-                        </button>
-                    </div>
-                </div>
+                <!-- Cada documento tendrá su propio panel -->
             </div>
         </div>
     </section>
@@ -145,8 +117,111 @@
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="./js/recorder.js"></script>
-    <script src="./js/main.js"></script>
+    <!-- Chat Modal -->
+    <div class="chat-modal hidden" id="chatModal">
+        <div class="chat-modal-overlay"></div>
+        <div class="chat-modal-content">
+            <div class="chat-modal-header">
+                <div>
+                    <h3>🤖 AI Assistant</h3>
+                    <p class="chat-subtitle">Ask me to improve or modify your document</p>
+                </div>
+                <button class="btn-close-chat" id="closeChatBtn">&times;</button>
+            </div>
+            <div class="chat-modal-body" id="chatMessages">
+                <div class="chat-welcome">
+                    <div class="chat-welcome-icon">💬</div>
+                    <h4>Welcome to AI Assistant!</h4>
+                    <p>I can help you:</p>
+                    <ul>
+                        <li>Improve specific sections of your document</li>
+                        <li>Rewrite paragraphs with better clarity</li>
+                        <li>Answer questions about the content</li>
+                        <li>Suggest legal writing improvements</li>
+                    </ul>
+                    <p class="chat-tip">💡 <strong>Tip:</strong> Ask me "Rewrite the first paragraph" or "Make this sound more formal"</p>
+                </div>
+            </div>
+            <div class="chat-modal-footer">
+                <div class="chat-input-container">
+                    <textarea 
+                        id="chatInput" 
+                        placeholder="Ask me anything about your document..."
+                        rows="2"
+                    ></textarea>
+                    <button class="btn btn-primary chat-send-btn" id="sendChatBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 8L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón flotante de chat -->
+    <button class="chat-fab hidden" id="chatFab" title="Open AI Assistant">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+    </button>
+
+    <!-- Modal de Vista Previa de Documento -->
+    <div class="modal hidden" id="documentPreviewModal">
+        <div class="modal-content document-preview-modal-content">
+            <div class="modal-header">
+                <h3 id="previewModalTitle">Document Preview</h3>
+                <button class="btn-close" id="closePreviewModalBtn">&times;</button>
+            </div>
+            <div class="modal-body document-preview-body">
+                <div id="documentPreviewContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Ajustes -->
+    <div class="modal hidden" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button class="btn-close" id="closeSettingsBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="aiModelSelect">AI Model</label>
+                    <select id="aiModelSelect" class="form-select">
+                        <option value="google_gemini" selected>Google Gemini</option>
+                        <option value="groq_ai">Groq AI</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="settingsPassword">Password</label>
+                    <input type="password" id="settingsPassword" class="form-input" placeholder="Enter password">
+                    <div class="error-message hidden" id="settingsErrorMessage"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="changeAiModelBtn">Change AI Model</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Librerías para vista previa de documentos -->
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+    <script>
+        // Configurar PDF.js worker
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+        }
+    </script>
+    <!-- Mammoth.js para DOCX (más confiable) -->
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+    
+    <!-- Aplicación modular (ES6 Modules) -->
+    <script type="module" src="/frontend/js/main.js?v=3.0"></script>
+    
+    <!-- Debug: Verificar funciones globales (eliminar en producción) -->
+    <script type="module" src="/frontend/js/debug.js?v=3.0"></script>
 </body>
 </html>
